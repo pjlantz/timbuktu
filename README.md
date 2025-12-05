@@ -1,5 +1,5 @@
 ## Details
-The vulnerability was introduced in the SPL 230305. This project is named after Timbuktu as it exploits a UAF in the Mali GPU driver.
+The vulnerability was introduced in the SPL 230305 and patched in 231205. This project is named after Timbuktu as it exploits a UAF in the Mali GPU driver.
 
 A use-after-free was found in the Mali driver targeting devices running a new generation of Mali GPUs that have a feature called Command Stream Frontend (CSF). This CSF feature is present on the following GPUs: Mali-G710, Mali-G610, Mali-G510 and Mali-G310. Testing and exploit development has been done only on Pixel 7 devices.
 
