@@ -114,7 +114,6 @@ struct pipe_buffer {
 ```
 The arbitrary r/w primitive is used to overwrite the current tasks cred structures with those of the `init` process and disabling SELinux. This is accomplished by having one thread with `addr_limit` set to `KERNEL_DS` using the limited write primitive in order to bypass User Access Override (UAO).  For a `kernel_read(addr, size)` operation, this thread will write the data from the kernel address `addr` to the pipe buffer by executing `write(pipe[1], addr, size)`. A `kernel_write(addr, size)` is implemented using a `read(pipe[0], addr, size)`. Another thread is then responsible for writing/reading data to/from a user-space address, see summary below.
 
-
 ``` cpp
 int pipefds[2];
 pipe(pipefds);
@@ -131,6 +130,9 @@ read(pipefds[0], 0xffffff80...,, 8); // Thread 1 with addr_limit set to KERN_DS
 ```
 
 Finally a root shell is spawned.
+
+Note that on later updates of the Android kernel the overwriting of `addr_limit` was mitigated but a read/write primitive is still possible via the `pipe_buffer` object, this is the current implementation in the exploit.
+
 
 ## Kernel info leak
 
