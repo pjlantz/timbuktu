@@ -1,5 +1,5 @@
 ## Details
-Its unclear which exact driver versions on ARM website but on Pixel phones it was introduced in SPL 230305 and patched in 231205. Pixel 7 and 8 series were vulnerable.
+Its unclear which CVE this relates to and what are the vulnerable driver versions on ARM website but on Pixel phones it was introduced in SPL 230305 and patched in 231205. Pixel 7 and 8 series were vulnerable.
 
 Drivers must have Command Stream Frontend (CSF) enabled.
 
@@ -102,7 +102,7 @@ At (1) a `dma_fence` object named `fence_out` is allocated, if a `copy_to_user` 
 
 ``` cpp
 void main() {
-	mali_fd = open("/dev/mali0", O_RDWR);
+	int mali_fd = open("/dev/mali0", O_RDWR);
 	struct kbase_ioctl_version_check vc = {
 		.major = 11,
 		.minor = 11
@@ -137,4 +137,4 @@ void main() {
 }
 ```
 
-Running this repeatedly should result in a kernel panic due to `kernel BUG at mm/slub.c:300!` or a `Unable to handle kernel paging request` issue.
+Running this repeatedly should eventually result in a kernel panic due to `kernel BUG at mm/slub.c:300!` or a `Unable to handle kernel paging request` issue.
