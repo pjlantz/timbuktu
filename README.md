@@ -1,5 +1,5 @@
 ## Details
-Its unclear what are the vulnerable driver versions on ARM website but on Pixel phones it was introduced in SPL 230305 and patched in 231205. Pixel 7 and 8 series were vulnerable.
+Its unclear what are the vulnerable driver versions on ARM website but on Pixel phones the bug was introduced in SPL 230305 and patched in 231205. Pixel 7 and 8 series were vulnerable.
 
 Drivers must have Command Stream Frontend (CSF) enabled.
 
